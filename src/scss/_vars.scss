@@ -1,0 +1,20 @@
+// если вы хотите использовать sass-переменные - удалите root
+// colors
+// :root {
+//   // base
+//   --font-family: "Open Sans", sans-serif;
+//   --content-width: 1170px;
+//   --container-offset: 15px;
+//   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+//   // colors
+//   --light-color: #fff;
+// }
+
+$blue:#16C7FF;
+$darkblue:#115793;
+$lightblue:#E6F9FF;
+$black:#1F1F1F;
+$white:#F7F9FC;
+
+$transition:.8s cubic-bezier(0, 0.82, 0.165, 1);

@@ -112,6 +112,14 @@ a {
       background-color: $darkblue;
     }
   }
+  &--blue{
+    background-color: $darkblue;
+    color:#fff ;
+    &:hover{
+      color: $darkblue;
+      background-color: #fff;
+    }
+  }
 }
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;

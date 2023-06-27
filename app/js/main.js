@@ -20,7 +20,8 @@ console.log('components');
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions/mobile-check */ "./src/js/functions/mobile-check.js");
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+/* harmony import */ var graph_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graph-modal */ "./node_modules/graph-modal/src/graph-modal.js");
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 // Данный файл - лишь собрание подключений готовых компонентов.
 // Рекомендуется создавать отдельный файл в папке components и подключать все там
 
@@ -53,8 +54,8 @@ console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)
 // import { enableScroll } from './functions/enable-scroll';
 
 // Реализация модального окна
-// import GraphModal from 'graph-modal';
-// const modal = new GraphModal();
+
+const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]();
 
 // Реализация табов
 // import GraphTabs from 'graph-tabs';
@@ -74,8 +75,8 @@ console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)
 
 // Подключение свайпера
 
-swiper__WEBPACK_IMPORTED_MODULE_1__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination]);
-const swiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](".swiper", {
+swiper__WEBPACK_IMPORTED_MODULE_2__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_2__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_2__.Pagination]);
+const swiper = new swiper__WEBPACK_IMPORTED_MODULE_2__["default"](".swiper", {
   slidesPerView: 1,
   spaceBetween: 10
 });
@@ -458,6 +459,465 @@ if (typeof document !== 'undefined') {
   // coordination is required to use the polyfill in the top-level document:
   applyFocusVisiblePolyfill(document);
 }
+
+/***/ }),
+
+/***/ "./src/js/vendor/nice-select2.js":
+/*!***************************************!*\
+  !*** ./src/js/vendor/nice-select2.js ***!
+  \***************************************/
+/***/ ((module) => {
+
+!function (e, t) {
+   true ? module.exports = t() : 0;
+}(self, () => (() => {
+  "use strict";
+
+  var e = {
+      d: (t, i) => {
+        for (var s in i) e.o(i, s) && !e.o(t, s) && Object.defineProperty(t, s, {
+          enumerable: !0,
+          get: i[s]
+        });
+      },
+      o: (e, t) => Object.prototype.hasOwnProperty.call(e, t),
+      r: e => {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+          value: "Module"
+        }), Object.defineProperty(e, "__esModule", {
+          value: !0
+        });
+      }
+    },
+    t = {};
+  function i(e) {
+    var t = document.createEvent("MouseEvents");
+    t.initEvent("click", !0, !1), e.dispatchEvent(t);
+  }
+  function s(e) {
+    var t = document.createEvent("HTMLEvents");
+    t.initEvent("change", !0, !1), e.dispatchEvent(t);
+  }
+  function o(e) {
+    var t = document.createEvent("FocusEvent");
+    t.initEvent("focusin", !0, !1), e.dispatchEvent(t);
+  }
+  function n(e) {
+    var t = document.createEvent("FocusEvent");
+    t.initEvent("focusout", !0, !1), e.dispatchEvent(t);
+  }
+  function d(e) {
+    var t = document.createEvent("UIEvent");
+    t.initEvent("modalclose", !0, !1), e.dispatchEvent(t);
+  }
+  function l(e, t) {
+    "invalid" == t ? (c(this.dropdown, "invalid"), h(this.dropdown, "valid")) : (c(this.dropdown, "valid"), h(this.dropdown, "invalid"));
+  }
+  function r(e, t) {
+    return null != e[t] ? e[t] : e.getAttribute(t);
+  }
+  function a(e, t) {
+    return !!e && e.classList.contains(t);
+  }
+  function c(e, t) {
+    if (e) return e.classList.add(t);
+  }
+  function h(e, t) {
+    if (e) return e.classList.remove(t);
+  }
+  e.r(t), e.d(t, {
+    bind: () => f,
+    default: () => u
+  });
+  var p = {
+    data: null,
+    searchable: !1,
+    showSelectedItems: !1
+  };
+  function u(e, t) {
+    this.el = e, this.config = Object.assign({}, p, t || {}), this.data = this.config.data, this.selectedOptions = [], this.placeholder = r(this.el, "placeholder") || this.config.placeholder || "Select an option", this.searchtext = r(this.el, "searchtext") || this.config.searchtext || "Search", this.selectedtext = r(this.el, "selectedtext") || this.config.selectedtext || "selected", this.dropdown = null, this.multiple = r(this.el, "multiple"), this.disabled = r(this.el, "disabled"), this.create();
+  }
+  function f(e, t) {
+    return new u(e, t);
+  }
+  return u.prototype.create = function () {
+    this.el.style.opacity = "0", this.el.style.width = "0", this.el.style.padding = "0", this.el.style.height = "0", this.data ? this.processData(this.data) : this.extractData(), this.renderDropdown(), this.bindEvent();
+  }, u.prototype.processData = function (e) {
+    var t = [];
+    e.forEach(e => {
+      t.push({
+        data: e,
+        attributes: {
+          selected: !!e.selected,
+          disabled: !!e.disabled,
+          optgroup: "optgroup" == e.value
+        }
+      });
+    }), this.options = t;
+  }, u.prototype.extractData = function () {
+    var e = this.el.querySelectorAll("option,optgroup"),
+      t = [],
+      i = [],
+      s = [];
+    e.forEach(e => {
+      if ("OPTGROUP" == e.tagName) var s = {
+        text: e.label,
+        value: "optgroup"
+      };else {
+        let t = e.innerText;
+        null != e.dataset.display && (t = e.dataset.display), s = {
+          text: t,
+          value: e.value,
+          selected: null != e.getAttribute("selected"),
+          disabled: null != e.getAttribute("disabled")
+        };
+      }
+      var o = {
+        selected: null != e.getAttribute("selected"),
+        disabled: null != e.getAttribute("disabled"),
+        optgroup: "OPTGROUP" == e.tagName
+      };
+      t.push(s), i.push({
+        data: s,
+        attributes: o
+      });
+    }), this.data = t, this.options = i, this.options.forEach(e => {
+      e.attributes.selected && s.push(e);
+    }), this.selectedOptions = s;
+  }, u.prototype.renderDropdown = function () {
+    var e = ["nice-select", r(this.el, "class") || "", this.disabled ? "disabled" : "", this.multiple ? "has-multiple" : ""];
+    let t = '<div class="nice-select-search-box">';
+    t += `<input type="text" class="nice-select-search" placeholder="${this.searchtext}..." title="search"/>`, t += "</div>";
+    var i = `<div class="${e.join(" ")}" tabindex="${this.disabled ? null : 0}">`;
+    i += `<span class="${this.multiple ? "multiple-options" : "current"}"></span>`, i += '<div class="nice-select-dropdown">', i += `${this.config.searchable ? t : ""}`, i += '<ul class="list"></ul>', i += "</div>", i += "</div>", this.el.insertAdjacentHTML("afterend", i), this.dropdown = this.el.nextElementSibling, this._renderSelectedItems(), this._renderItems();
+  }, u.prototype._renderSelectedItems = function () {
+    if (this.multiple) {
+      var e = "";
+      this.config.showSelectedItems || this.config.showSelectedItems || "auto" == window.getComputedStyle(this.dropdown).width || this.selectedOptions.length < 2 ? (this.selectedOptions.forEach(function (t) {
+        e += `<span class="current">${t.data.text}</span>`;
+      }), e = "" == e ? this.placeholder : e) : e = this.selectedOptions.length + " " + this.selectedtext, this.dropdown.querySelector(".multiple-options").innerHTML = e;
+    } else {
+      var t = this.selectedOptions.length > 0 ? this.selectedOptions[0].data.text : this.placeholder;
+      this.dropdown.querySelector(".current").innerHTML = t;
+    }
+  }, u.prototype._renderItems = function () {
+    var e = this.dropdown.querySelector("ul");
+    this.options.forEach(t => {
+      e.appendChild(this._renderItem(t));
+    });
+  }, u.prototype._renderItem = function (e) {
+    var t = document.createElement("li");
+    if (t.innerHTML = e.data.text, e.attributes.optgroup) c(t, "optgroup");else {
+      t.setAttribute("data-value", e.data.value);
+      var i = ["option", e.attributes.selected ? "selected" : null, e.attributes.disabled ? "disabled" : null];
+      t.addEventListener("click", this._onItemClicked.bind(this, e)), t.classList.add(...i);
+    }
+    return e.element = t, t;
+  }, u.prototype.update = function () {
+    if (this.extractData(), this.dropdown) {
+      var e = a(this.dropdown, "open");
+      this.dropdown.parentNode.removeChild(this.dropdown), this.create(), e && i(this.dropdown);
+    }
+    r(this.el, "disabled") ? this.disable() : this.enable();
+  }, u.prototype.disable = function () {
+    this.disabled || (this.disabled = !0, c(this.dropdown, "disabled"));
+  }, u.prototype.enable = function () {
+    this.disabled && (this.disabled = !1, h(this.dropdown, "disabled"));
+  }, u.prototype.clear = function () {
+    this.resetSelectValue(), this.selectedOptions = [], this._renderSelectedItems(), this.update(), s(this.el);
+  }, u.prototype.destroy = function () {
+    this.dropdown && (this.dropdown.parentNode.removeChild(this.dropdown), this.el.style.display = "");
+  }, u.prototype.bindEvent = function () {
+    this.dropdown.addEventListener("click", this._onClicked.bind(this)), this.dropdown.addEventListener("keydown", this._onKeyPressed.bind(this)), this.dropdown.addEventListener("focusin", o.bind(this, this.el)), this.dropdown.addEventListener("focusout", n.bind(this, this.el)), this.el.addEventListener("invalid", l.bind(this, this.el, "invalid")), window.addEventListener("click", this._onClickedOutside.bind(this)), this.config.searchable && this._bindSearchEvent();
+  }, u.prototype._bindSearchEvent = function () {
+    var e = this.dropdown.querySelector(".nice-select-search");
+    e && e.addEventListener("click", function (e) {
+      return e.stopPropagation(), !1;
+    }), e.addEventListener("input", this._onSearchChanged.bind(this));
+  }, u.prototype._onClicked = function (e) {
+    var t, i;
+    if (e.preventDefault(), a(this.dropdown, "open") ? this.multiple || (h(this.dropdown, "open"), d(this.el)) : (c(this.dropdown, "open"), t = this.el, (i = document.createEvent("UIEvent")).initEvent("modalopen", !0, !1), t.dispatchEvent(i)), a(this.dropdown, "open")) {
+      var s = this.dropdown.querySelector(".nice-select-search");
+      s && (s.value = "", s.focus());
+      var o = this.dropdown.querySelector(".focus");
+      h(o, "focus"), c(o = this.dropdown.querySelector(".selected"), "focus"), this.dropdown.querySelectorAll("ul li").forEach(function (e) {
+        e.style.display = "";
+      });
+    } else this.dropdown.focus();
+  }, u.prototype._onItemClicked = function (e, t) {
+    var i = t.target;
+    a(i, "disabled") || (this.multiple ? a(i, "selected") ? (h(i, "selected"), this.selectedOptions.splice(this.selectedOptions.indexOf(e), 1), this.el.querySelector(`option[value="${i.dataset.value}"]`).removeAttribute("selected")) : (c(i, "selected"), this.selectedOptions.push(e)) : (this.selectedOptions.forEach(function (e) {
+      h(e.element, "selected");
+    }), c(i, "selected"), this.selectedOptions = [e]), this._renderSelectedItems(), this.updateSelectValue());
+  }, u.prototype.updateSelectValue = function () {
+    if (this.multiple) {
+      var e = this.el;
+      this.selectedOptions.forEach(function (t) {
+        var i = e.querySelector(`option[value="${t.data.value}"]`);
+        i && i.setAttribute("selected", !0);
+      });
+    } else this.selectedOptions.length > 0 && (this.el.value = this.selectedOptions[0].data.value);
+    s(this.el);
+  }, u.prototype.resetSelectValue = function () {
+    if (this.multiple) {
+      var e = this.el;
+      this.selectedOptions.forEach(function (t) {
+        var i = e.querySelector(`option[value="${t.data.value}"]`);
+        i && i.removeAttribute("selected");
+      });
+    } else this.selectedOptions.length > 0 && (this.el.selectedIndex = -1);
+    s(this.el);
+  }, u.prototype._onClickedOutside = function (e) {
+    this.dropdown.contains(e.target) || (h(this.dropdown, "open"), d(this.el));
+  }, u.prototype._onKeyPressed = function (e) {
+    var t = this.dropdown.querySelector(".focus"),
+      s = a(this.dropdown, "open");
+    if (13 == e.keyCode) i(s ? t : this.dropdown);else if (40 == e.keyCode) {
+      if (s) {
+        var o = this._findNext(t);
+        o && (h(this.dropdown.querySelector(".focus"), "focus"), c(o, "focus"));
+      } else i(this.dropdown);
+      e.preventDefault();
+    } else if (38 == e.keyCode) {
+      if (s) {
+        var n = this._findPrev(t);
+        n && (h(this.dropdown.querySelector(".focus"), "focus"), c(n, "focus"));
+      } else i(this.dropdown);
+      e.preventDefault();
+    } else if (27 == e.keyCode && s) i(this.dropdown);else if (32 === e.keyCode && s) return !1;
+    return !1;
+  }, u.prototype._findNext = function (e) {
+    for (e = e ? e.nextElementSibling : this.dropdown.querySelector(".list .option"); e;) {
+      if (!a(e, "disabled") && "none" != e.style.display) return e;
+      e = e.nextElementSibling;
+    }
+    return null;
+  }, u.prototype._findPrev = function (e) {
+    for (e = e ? e.previousElementSibling : this.dropdown.querySelector(".list .option:last-child"); e;) {
+      if (!a(e, "disabled") && "none" != e.style.display) return e;
+      e = e.previousElementSibling;
+    }
+    return null;
+  }, u.prototype._onSearchChanged = function (e) {
+    var t = a(this.dropdown, "open"),
+      i = e.target.value;
+    if ("" == (i = i.toLowerCase())) this.options.forEach(function (e) {
+      e.element.style.display = "";
+    });else if (t) {
+      var s = new RegExp(i);
+      this.options.forEach(function (e) {
+        var t = e.data.text.toLowerCase(),
+          i = s.test(t);
+        e.element.style.display = i ? "" : "none";
+      });
+    }
+    this.dropdown.querySelectorAll(".focus").forEach(function (e) {
+      h(e, "focus");
+    }), c(this._findNext(null), "focus");
+  }, t;
+})());
+
+/***/ }),
+
+/***/ "./node_modules/graph-modal/src/graph-modal.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/graph-modal/src/graph-modal.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GraphModal)
+/* harmony export */ });
+class GraphModal {
+  constructor(options) {
+    let defaultOptions = {
+      isOpen: () => {},
+      isClose: () => {},
+    }
+    this.options = Object.assign(defaultOptions, options);
+    this.modal = document.querySelector('.graph-modal');
+    this.speed = 300;
+    this.animation = 'fade';
+    this._reOpen = false;
+    this._nextContainer = false;
+    this.modalContainer = false;
+    this.isOpen = false;
+    this.previousActiveElement = false;
+    this._focusElements = [
+      'a[href]',
+      'input',
+      'select',
+      'textarea',
+      'button',
+      'iframe',
+      '[contenteditable]',
+      '[tabindex]:not([tabindex^="-"])'
+    ];
+    this._fixBlocks = document.querySelectorAll('.fix-block');
+    this.events();
+  }
+
+  events() {
+    if (this.modal) {
+      document.addEventListener('click', function (e) {
+        const clickedElement = e.target.closest(`[data-graph-path]`);
+        if (clickedElement) {
+          let target = clickedElement.dataset.graphPath;
+          let animation = clickedElement.dataset.graphAnimation;
+          let speed = clickedElement.dataset.graphSpeed;
+          this.animation = animation ? animation : 'fade';
+          this.speed = speed ? parseInt(speed) : 300;
+          this._nextContainer = document.querySelector(`[data-graph-target="${target}"]`);
+          this.open();
+          return;
+        }
+
+        if (e.target.closest('.js-modal-close')) {
+          this.close();
+          return;
+        }
+      }.bind(this));
+
+      window.addEventListener('keydown', function (e) {
+        if (e.keyCode == 27 && this.isOpen) {
+          this.close();
+        }
+
+        if (e.which == 9 && this.isOpen) {
+          this.focusCatch(e);
+          return;
+        }
+      }.bind(this));
+
+      document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('graph-modal') && e.target.classList.contains("is-open")) {
+          this.close();
+        }
+      }.bind(this));
+    }
+
+  }
+
+  open(selector) {
+    this.previousActiveElement = document.activeElement;
+
+    if (this.isOpen) {
+      this.reOpen = true;
+      this.close();
+      return;
+    }
+
+    this.modalContainer = this._nextContainer;
+
+    if (selector) {
+      this.modalContainer = document.querySelector(`[data-graph-target="${selector}"]`);
+    }
+    
+    this.modalContainer.scrollTo(0, 0)
+
+    this.modal.style.setProperty('--transition-time', `${this.speed / 1000}s`);
+    this.modal.classList.add('is-open');
+
+    document.body.style.scrollBehavior = 'auto';
+    document.documentElement.style.scrollBehavior = 'auto';
+
+    this.disableScroll();
+
+    this.modalContainer.classList.add('graph-modal-open');
+    this.modalContainer.classList.add(this.animation);
+
+    setTimeout(() => {
+      this.options.isOpen(this);
+      this.modalContainer.classList.add('animate-open');
+      this.isOpen = true;
+      this.focusTrap();
+    }, this.speed);
+  }
+
+  close() {
+    if (this.modalContainer) {
+      this.modalContainer.classList.remove('animate-open');
+      this.modalContainer.classList.remove(this.animation);
+      this.modal.classList.remove('is-open');
+      this.modalContainer.classList.remove('graph-modal-open');
+
+      this.enableScroll();
+
+      document.body.style.scrollBehavior = 'auto';
+      document.documentElement.style.scrollBehavior = 'auto';
+
+      this.options.isClose(this);
+      this.isOpen = false;
+      this.focusTrap();
+
+      if (this.reOpen) {
+        this.reOpen = false;
+        this.open();
+      }
+    }
+  }
+
+  focusCatch(e) {
+    const nodes = this.modalContainer.querySelectorAll(this._focusElements);
+    const nodesArray = Array.prototype.slice.call(nodes);
+    const focusedItemIndex = nodesArray.indexOf(document.activeElement)
+    if (e.shiftKey && focusedItemIndex === 0) {
+      nodesArray[nodesArray.length - 1].focus();
+      e.preventDefault();
+    }
+    if (!e.shiftKey && focusedItemIndex === nodesArray.length - 1) {
+      nodesArray[0].focus();
+      e.preventDefault();
+    }
+  }
+
+  focusTrap() {
+    const nodes = this.modalContainer.querySelectorAll(this._focusElements);
+    if (this.isOpen) {
+      if (nodes.length) nodes[0].focus();
+    } else {
+      this.previousActiveElement.focus();
+    }
+  }
+
+  disableScroll() {
+    let pagePosition = window.scrollY;
+    this.lockPadding();
+    document.body.classList.add('disable-scroll');
+    document.body.dataset.position = pagePosition;
+    document.body.style.top = -pagePosition + 'px';
+  }
+
+  enableScroll() {
+    let pagePosition = parseInt(document.body.dataset.position, 10);
+    this.unlockPadding();
+    document.body.style.top = 'auto';
+    document.body.classList.remove('disable-scroll');
+    window.scrollTo({
+      top: pagePosition,
+      left: 0
+    });
+    document.body.removeAttribute('data-position');
+  }
+
+  lockPadding() {
+    let paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
+    this._fixBlocks.forEach((el) => {
+      el.style.paddingRight = paddingOffset;
+    });
+    document.body.style.paddingRight = paddingOffset;
+  }
+
+  unlockPadding() {
+    this._fixBlocks.forEach((el) => {
+      el.style.paddingRight = '0px';
+    });
+    document.body.style.paddingRight = '0px';
+  }
+}
+
 
 /***/ }),
 
@@ -13134,15 +13594,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_functions */ "./src/js/_functions.js");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_components */ "./src/js/_components.js");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _vendor_nice_select2_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vendor/nice-select2.js */ "./src/js/vendor/nice-select2.js");
+/* harmony import */ var _vendor_nice_select2_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_vendor_nice_select2_js__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
-let bg = document.querySelector('.hero__right img');
-window.addEventListener('mousemove', function (e) {
-  let x = e.clientX / window.innerWidth;
-  let y = e.clientY / window.innerHeight;
-  bg.style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
+
+window.addEventListener("load", function () {
+  let bg = document.querySelector('.hero__right img');
+  window.addEventListener('mousemove', function (e) {
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+    bg.style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
+  });
+  NiceSelect(document.querySelector("select"), {
+    searchable: true
+  });
 });
 })();
 

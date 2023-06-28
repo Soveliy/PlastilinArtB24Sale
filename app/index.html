@@ -62,6 +62,12 @@
             <a href="#" class="hero__btn btn btn--white">
               <span>Получить демо-версию</span>
             </a>
+            <div class="hero__bottom">
+              <div class="hero__icon">
+                <img src="img/svg/arrowbottom.svg" alt="">
+              </div>
+              Листай
+            </div>
 
           </div>
           <div class="hero__right">
@@ -273,12 +279,12 @@
         <div class="container">
           <div class="offer__content">
             <div class="offer__head">
-              <h2 class="section__title section__title-big section__title--margin-lit">
+              <h2 class="section__title section__title--big section__title--margin-lit">
                 Бесплатно поможем подключить демо-версию Битрикс24
               </h2>
               <div class="section__desc">
                 <p>
-                  Битрикс24 — комплекс инструментов, который объединяет все бизнес-процессы, коммуникации, документы в единой системе. Он заменяет таблички Exel, мессенджеры, файлы и беготню по кабинетам на один сервис
+                  Хотите попробовать Битрикс24? Заполните форму и получите полноценную официальную версию продукта с бесплатным периодом 30 дней
                 </p>
               </div>
             </div>
@@ -360,14 +366,15 @@
       </section>
       <section class="section">
         <div class="container">
-          <h2 class="section__title">
+          <h2 class="section__title section__title--margin--default">
             Сколько стоит Битрикс24?
           </h2>
-          <div class="section__desc">
+          <div class="section__desc section__desc--lit">
             <p>
               Цена за месяц при покупке на
             </p>
-            <select class="section__select">
+          </div>
+            <select id="a-select" class="section__select">
               <option value="1">1 мес</option>
               <option value="2">3 мес</option>
               <option value="3">6 мес</option>
@@ -445,6 +452,14 @@
                           <li class="tariff__item">
                             <div class="tariff__item-name">
                               Офис, совместная работа
+                            </div>
+                            <div class="tariff__level level" data-level="2">
+                              <span></span><span></span><span></span>
+                            </div>
+                          </li>
+                          <li class="tariff__item">
+                            <div class="tariff__item-name">
+                              Сайты и лендинги
                             </div>
                             <div class="tariff__option">
                               2
@@ -786,7 +801,7 @@
               </div>
 
             </div>
-          </div>
+
         </div>
       </section>
       <section class="promo">

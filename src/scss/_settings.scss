@@ -84,6 +84,9 @@ a {
   max-width: 1440px;
   padding: 0 10px;
   box-sizing: border-box;
+  @include mobile(){
+    padding: 0 30px;
+  }
 
 }
 .btn{
@@ -103,6 +106,10 @@ a {
   span{
     position: relative;
     z-index: 10;
+  }
+  @include mobile(){
+    padding: 13px;
+    font-size: 18px;
   }
   &--white{
     background-color: #fff;

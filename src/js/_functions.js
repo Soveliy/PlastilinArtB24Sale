@@ -50,13 +50,13 @@ const modal = new GraphModal();
 // });
 
 // Подключение свайпера
-import Swiper, { Navigation, Pagination } from 'swiper';
-Swiper.use([Navigation, Pagination]);
-const swiper = new Swiper(".swiper", {
-  slidesPerView: 1,
-  spaceBetween:10,
+// import Swiper, { Navigation, Pagination } from 'swiper';
+// Swiper.use([Navigation, Pagination]);
+// const swiper = new Swiper(".swiper", {
+//   slidesPerView: 1,
+//   spaceBetween:10,
   
-});
+// });
 
 // Подключение анимаций по скроллу
 // import AOS from 'aos';

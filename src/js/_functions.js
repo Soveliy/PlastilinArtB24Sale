@@ -59,8 +59,10 @@ const modal = new GraphModal();
 // });
 
 // Подключение анимаций по скроллу
-// import AOS from 'aos';
-// AOS.init();
+import AOS from 'aos';
+AOS.init({
+    once:true
+});
 
 // Подключение параллакса блоков при скролле
 // import Rellax from 'rellax';
@@ -78,11 +80,126 @@ const modal = new GraphModal();
 //   console.log(e.detail.dir);
 // });
 
-// import { validateForms } from './functions/validate-forms';
-// const rules1 = [...];
+import { validateForms } from './functions/validate-forms';
+import JustValidate from "just-validate";
+// const rules1 = [
+//    { email:{
+//     required:true
+//     }}
+// ];
 
 // const afterForm = () => {
 //   console.log('Произошла отправка, тут можно писать любые действия');
 // };
 
-// validateForms('.form-1', rules1, afterForm);
+const telSelector = document.querySelectorAll('input[type="tel"]');
+const inputMask = new Inputmask('+7 (999) 999-99-99');
+inputMask.mask(telSelector,{
+    showMaskOnHover: false,
+});
+const validation = new JustValidate(".offer__form--page") 
+validation
+    .addField(".form__input--name ", [
+        {
+            rule:"required",
+            value:true,
+            errorMessage:"Введите имя"
+        }
+    ])
+    .addField(".form__input--phone ", [
+        {
+            rule:"required",
+            value:true,
+            errorMessage:"Введите номер"
+        },
+        {
+            rule:"function",
+            errorMessage:"Введите корректный номер",
+            validator: function() {
+            const phone = telSelector[0].inputmask.unmaskedvalue();
+            return phone.length === 10;
+          },
+        }
+    ])
+    .addField(".form__input--email ", [
+        {
+            rule:"required",
+            value:true,
+            errorMessage:"Введите Email"
+        }
+    ]).onSuccess((ev) => {
+            console.log(ev.target)
+          let formData = new FormData(ev.target);
+        console.log(formData)
+          let xhr = new XMLHttpRequest();
+      
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                if (afterSend) {
+                  afterSend();
+                }
+                console.log('Отправлено');
+              }
+            }
+          }
+      
+          xhr.open('POST', 'mail.php', true);
+          xhr.send(formData);
+      
+          ev.target.reset();
+    })
+
+
+    const validation2 = new JustValidate(".graph-modal .offer__form") 
+    validation2
+        .addField(".form__input--name ", [
+            {
+                rule:"required",
+                value:true,
+                errorMessage:"Введите имя"
+            }
+        ])
+        .addField(".form__input--phone ", [
+            {
+                rule:"required",
+                value:true,
+                errorMessage:"Введите номер"
+            },
+            {
+                rule:"function",
+                errorMessage:"Введите корректный номер",
+                validator: function() {
+                const phone = telSelector[0].inputmask.unmaskedvalue();
+                return phone.length === 10;
+              },
+            }
+        ])
+        .addField(".form__input--email ", [
+            {
+                rule:"required",
+                value:true,
+                errorMessage:"Введите Email"
+            }
+        ]).onSuccess((ev) => {
+                console.log(ev.target)
+              let formData = new FormData(ev.target);
+            console.log(formData)
+              let xhr = new XMLHttpRequest();
+          
+              xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                    if (afterSend) {
+                      afterSend();
+                    }
+                    console.log('Отправлено');
+                  }
+                }
+              }
+          
+              xhr.open('POST', 'mail.php', true);
+              xhr.send(formData);
+          
+              ev.target.reset();
+        })

@@ -81,11 +81,14 @@ a {
 
 .container {
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 1600px;
   padding: 0 10px;
   box-sizing: border-box;
   @include mobile(){
     padding: 0 30px;
+  }
+  @include desktop(){
+    padding: 0 80px;
   }
 
 }
@@ -103,6 +106,10 @@ a {
   transition: $transition;
   outline: none;
   border: none;
+  cursor: pointer;
+  @include lit-desktop(){
+    transition: $transition;
+  }
   span{
     position: relative;
     z-index: 10;
@@ -115,16 +122,20 @@ a {
     background-color: #fff;
     color: $darkblue;
     &:hover{
+     @include lit-desktop(){
       color: #fff;
       background-color: $darkblue;
+     }
     }
   }
   &--blue{
     background-color: $darkblue;
     color:#fff ;
     &:hover{
+     @include lit-desktop(){
       color: $darkblue;
       background-color: #fff;
+     }
     }
   }
 }

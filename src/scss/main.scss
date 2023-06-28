@@ -52,6 +52,12 @@
   @include lit-desktop(){
     padding: 145px 0 30px;
   }
+  @include big-desktop(){
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 145px 0 200px;
+  }
   &__title{
     font-size: 28px;
     font-weight: 700;
@@ -78,6 +84,9 @@
     @include lit-desktop(){
       max-width: 605px;
     }
+    @include big-desktop(){
+      max-width: 710px;
+    }
 
   }
   &__btn{
@@ -85,6 +94,9 @@
     @include mobile(){
       margin-top: 40px;
       max-width: 297px;
+    }
+    @include big-desktop(){
+      margin-top: 50px;
     }
 
   }
@@ -100,6 +112,10 @@
       width: 45%;
       flex-shrink: 0;
     }
+    @include desktop(){
+      width: 38%;
+      position: relative;
+    }
     img{
       max-width: 70%;
       display: block;
@@ -110,6 +126,16 @@
       @include lit-desktop(){
         max-width: 100%;
         margin: 0;
+      }
+      @include desktop(){
+        position: absolute;
+        max-width: inherit;
+        left: -9%;
+        bottom: -7%;
+        width: 127%;
+      }
+      @include big-desktop(){
+        top: 0;
       }
     }
   }
@@ -122,8 +148,13 @@
     font-weight: 600;
     line-height: 150%;
     margin-top: 74px;
+    animation: sliding infinite 2.5s;
     @include lit-desktop(){
       display: flex;
+    }
+    @include big-desktop(){
+      position: absolute;
+      bottom: 60px;
     }
   }
   &__icon{
@@ -163,6 +194,10 @@
   }
   @include lit-desktop(){
     font-size: 20px;
+    transition: $transition;
+    &:hover{
+      color: $darkblue;
+    }
   }
   &__icon{
     height: 20px;
@@ -190,6 +225,9 @@ select.section__select{
   @include lit-desktop(){
     padding: 90px 0;
   }
+  @include big-desktop(){
+    padding: 100px 0;
+  }
   &--grey-bg{
     background: #F7F9FC;
   }
@@ -204,6 +242,14 @@ select.section__select{
     border: none;
     padding: 0 30px 0 10px;
     margin-bottom: 30px;
+    @include mobile(){
+      font-size: 18px;
+      margin-bottom: 0;
+      padding: 0 30px 0 20px;
+      height: 50px;
+      width: 178px;
+      line-height: 50px;
+    }
     &:after{
       height: 8px;
       width: 8px;
@@ -211,6 +257,12 @@ select.section__select{
       border-color: #1F1F1F;
       top: 45%;
       right: 10px;
+      @include mobile(){
+        right: 20px;
+        height: 12px;
+        width: 12px;
+        top: 40%;
+      }
     }
     .nice-select-dropdown{
       width: 100%;
@@ -237,6 +289,9 @@ select.section__select{
     }
     &--margin--default{
       margin-bottom: 20px;
+      @include desktop(){
+        margin-bottom: 30px;
+      }
     }
     &--margin-big{
       margin-bottom: 30px;
@@ -271,6 +326,19 @@ select.section__select{
       margin-bottom: 12px;
     }
     
+  }
+  &__underheader{
+    position: relative;
+    z-index: 500;
+    @include mobile(){
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      .section__desc {
+        margin: 0 20px 0 0;
+      }
+
+    }
   }
 }
 .tizers{
@@ -326,6 +394,7 @@ select.section__select{
         font-size: 16px;
         padding: 20px;
       }
+    
       .tizers-item__desc{
         @include mobile(){
           min-height: 81px;
@@ -343,6 +412,11 @@ select.section__select{
       padding: 5px 20px;
       @include mobile(){
         flex-direction: row;
+      }
+      @include lit-desktop(){
+        padding:  0 30px 0 0;
+        font-size: 16px;
+        
       }
       .tizers-item__icon{
         height: 40px;
@@ -445,6 +519,9 @@ select.section__select{
       display: flex;
       align-items: center;
     }
+    @include desktop(){
+      min-height: 136px;
+    }
   }
   &__list{
     padding: 0;
@@ -486,8 +563,28 @@ select.section__select{
 
  
   color: #fff;
+  &__bubble{
+    display: none;
+    @include desktop(){
+      display: block;
+      position: absolute;
+    }
+    &--1{
+      right: 0;
+      bottom: 0;
+    }
+    &--2{
+      right: 17%;
+      top: 0;
+    }
+  }
   @include mobile(){
     padding-bottom: 80px;
+  }
+  .section__title,.section__desc{
+    @include desktop(){
+      max-width: 62%;
+    }
   }
 
   &__content{
@@ -502,6 +599,10 @@ select.section__select{
    @include mobile(){
     padding-bottom: 10px;
    }
+   @include desktop(){
+    position: relative;
+    padding-bottom: 0;
+   }
   }
   // &__row{
   //   @include mobile(){
@@ -514,7 +615,23 @@ select.section__select{
     background-color: #fff;
     border-radius: 10px;
     margin-bottom: 20px;
-
+    @include lit-desktop(){
+      padding: 40px;
+      margin-bottom: 0;
+    }
+    .tizers__row{
+      padding-top: 15px;
+      @include lit-desktop(){
+        padding-top: 45px;
+        margin: -15px;
+      }
+    }
+    .tizers__item-container{
+      @include lit-desktop(){
+        width: 50%;
+        padding: 15px;
+      }
+    }
     .section__title {
       font-size: 20px;
       
@@ -525,14 +642,45 @@ select.section__select{
       @include mobile(){
         font-size: 24px;
       }
+      @include lit-desktop(){
+        padding: 32px 0 0 0;
+        max-width: 100%;
+      }
     }
   }
-  .tizers__row{
-    padding-top: 15px;
-   
+  &__row{
+    @include lit-desktop(){
+      display: flex;
+     
+    }
   }
+  &__form{
+    @include lit-desktop(){
+      width: 351px;
+      flex-shrink: 0;
+      margin-left: 20px;
+    }
+    @include big-desktop(){
+      width: 538px;
+      margin-left: 40px;
+    }
+  }
+  
 }
 .form{
+  .just-validate-error-label{
+    font-size: 12px;
+    top: 30%;
+    font-size: 16px;
+    position: absolute;
+    left: 20px;
+    color: #ff4d00;
+    transform: translateY(-50%);
+    transition: $transition;
+    @include mobile(){
+      font-size: 18px;
+    }
+  }
   &__input{
     height: 60px;
     background-color: #fff;
@@ -545,11 +693,30 @@ select.section__select{
     color: rgba(31, 31, 31, 0.80);
     padding-top:17px;
     box-sizing: border-box;
-    
+    border: 1px solid #fff;
+    transition: $transition;
     &:focus~.form__input-placeholder,
     &:not(:focus):not(:placeholder-shown)~.form__input-placeholder {
       font-size: 12px;
       top: 30%;
+    }
+    
+    &.just-validate-error-field{
+      border-color: #ff4d00;
+    }
+    &.just-validate-error-field ~ .form__input-placeholder{
+      opacity: 0;
+    }
+    &:hover{
+      @include lit-desktop(){
+        border-color: #115793;
+        &::placeholder{
+          opacity: 0;
+        }
+      }
+    }
+    &:focus{
+      border-color: #115793;
     }
     &-container{
       position: relative;
@@ -561,6 +728,7 @@ select.section__select{
         }
       }
     }
+    
     &-placeholder{
       font-size: 16px;
       position: absolute;
@@ -588,6 +756,9 @@ select.section__select{
       font-size: 14px;
       max-width: 500px;
     }
+    @include lit-desktop(){
+      max-width: 430px;
+    }
     a{
       color: #FFF;
       text-decoration: underline;
@@ -612,12 +783,21 @@ select.section__select{
     display: flex;
     flex-wrap: wrap;
     margin: 20px 0 -5px;
-   
+    @include lit-desktop(){
+      margin: 35px 0 0 0;
+      align-items: center;
+    }
     &-title{
       width: 100%;
       margin-bottom: 5px;
       padding-left: 5px;
       box-sizing: border-box;
+      @include lit-desktop(){
+        width: auto;
+        margin-bottom: 0;
+        padding-left: 0;
+        margin-right: 10px;
+      }
     }
     &-option{
       display: flex;
@@ -625,6 +805,9 @@ select.section__select{
       align-items: center;
       padding: 5px;
       box-sizing: border-box;
+      @include lit-desktop(){
+        margin-right: 6px;
+      }
       &-level{
         margin-left: 10px;
         width: 40px;
@@ -636,11 +819,11 @@ select.section__select{
   &__row{
     @include desktop(){
       flex-wrap: wrap;
-      margin: -8px;
+      margin: -10px;
     }
     .swiper-slide{
       @include desktop(){
-        padding: 8px;
+        padding: 10px;
         box-sizing: border-box;
         width: 25%;
       }
@@ -662,12 +845,19 @@ select.section__select{
     padding: 10px;
     box-sizing: border-box;
     margin-bottom: 10px;
+    @include desktop(){
+      font-size: 24px;
+      padding: 17px;
+    }
   }
   &__content{
     padding: 20px 20px 0;
     box-sizing: border-box;
     border-radius: 10px;
     background: #F7F9FC;
+    @include lit-desktop(){
+      padding: 40px 20px 0;
+    }
   }
   &__value{
     text-align: center;
@@ -680,6 +870,9 @@ select.section__select{
     font-size: 16px;
     line-height: 150%;
     margin-bottom: 10px;
+    @include lit-desktop(){
+      margin-bottom: 20px;
+    }
   }
   &__price{
     color:  #115793;
@@ -688,6 +881,13 @@ select.section__select{
     font-weight: 700;
     line-height: 130%;
     margin-bottom: 30px;
+    display: none;
+    &--isCurrent{
+      display: block;
+    }
+    @include lit-desktop(){
+      margin-bottom: 38px;
+    }
   }
   &__list{
     padding: 0;
@@ -765,6 +965,9 @@ select.section__select{
     @include mobile(){
       padding: 55px 40px;
     }
+    @include lit-desktop(){
+      display: flex;
+    }
     &:before{
       content: '';
       position: absolute;
@@ -780,10 +983,21 @@ select.section__select{
   &__title,&__desc{
     color: #fff;
   }
+  &__content{
+    @include desktop(){
+      max-width: 50%;
+    }
+  }
+  &__title{
+    @include desktop(){
+      margin-bottom: 20px;
+    }
+  }
   &__image{
     position: relative;
     // overflow: hidden;
     margin-bottom: -3.4%;
+   
   }
   &__rocket1{
     position: absolute;
@@ -793,6 +1007,10 @@ select.section__select{
     filter: blur(4px);
     @include mobile(){
       top: -17%;
+    }
+    @include lit-desktop(){
+      top: -32%;
+      right: 1%;
     }
   }
   &__bubble1{
@@ -811,6 +1029,14 @@ select.section__select{
       width: 83px;
       left: 36.1%;
       top: 19%;
+    }
+    @include lit-desktop(){
+      left: 22.1%;
+      top: -2%;
+    }
+    @include big-desktop(){
+      left: 26.1%;
+      top: -6%;
     }
     img{
       max-width: 60%;
@@ -834,6 +1060,14 @@ select.section__select{
       right: 0.6%;
       bottom: 35px;
     }
+    @include lit-desktop(){
+      right: 6.6%;
+      bottom: 16%;
+    }
+    @include big-desktop(){
+      right: 12.6%;
+      bottom: 20%;
+    }
     img{
       max-width: 64%;
     }
@@ -844,6 +1078,13 @@ select.section__select{
     @include mobile(){
       padding-top: 7%;
       margin-bottom: -8.4%;
+    }
+    @include lit-desktop(){
+      padding-top: 0;
+      margin-bottom: 0;
+      width: 100%;
+      max-width: 50%;
+      margin-bottom: -6%;
     }
   }
   &__btn{
@@ -857,7 +1098,13 @@ select.section__select{
     transform: rotate(2.6deg);
     margin: 0 auto;
     display: block;
-    
+   @include lit-desktop(){
+    margin: -8% 0 0 10%;
+    max-width: 58%;
+   } 
+   @include big-desktop(){
+    margin: -8% 0 0 16%;
+   }
   }
   &__desc{
     @include mobile(){
@@ -873,10 +1120,19 @@ select.section__select{
     margin-top: 80px;
     padding: 20px 0;
   }
+  @include lit-desktop(){
+    margin-top: 90px;
+  }
+  @include big-desktop(){
+    margin-top: 100px;
+  }
   &__logo{
     width: 100px;
     @include mobile(){
       width: 140px;
+    }
+    @include lit-desktop(){
+      width: 180px;
     }
   }
   &__row{
@@ -892,8 +1148,21 @@ select.section__select{
   transition: $transition;
 }
 .graph-modal{
+  overflow: hidden;
   display: flex;
   align-items: flex-end;
+  @include lit-desktop(){
+    align-items: center;
+    justify-content: center;
+  }
+  .form{
+    @include lit-desktop(){
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 40px;
+    }
+  }
   &__container{
     width: 100%;
     margin: 0;
@@ -903,6 +1172,13 @@ select.section__select{
     transition: $transition;
     display: inline-flex !important;
     opacity: 1 !important;
+    @include lit-desktop(){
+      max-width: 618px;
+      padding: 0;
+    }
+    @include desktop(){
+      max-width: 700px;
+    }
     &.graph-modal-open{
       transform: none;
     }
@@ -910,10 +1186,40 @@ select.section__select{
       background-color: #F7F9FC;
     }
     .form__policy{
+      a{
+        color: rgba(31, 31, 31, 0.60);
+      }
       color: rgba(31, 31, 31, 0.60);
+      @include lit-desktop(){
+        max-width: 400px;
+      }
     }
   }
   .btn-reset{
     display: none;
+    @include lit-desktop(){
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-size: 20px 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+      top: 20px;
+    }
   }
+  
+}
+
+
+@keyframes sliding {
+  0% {
+   transform: translateY(-20px);
+  }
+  
+  50% {
+   transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(-20px);
+   }
 }

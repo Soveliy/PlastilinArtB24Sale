@@ -103,12 +103,14 @@ a {
   text-transform: uppercase;
   border-radius: 10px;
   text-align: center;
-  transition: $transition;
   outline: none;
   border: none;
   cursor: pointer;
   @include lit-desktop(){
     transition: $transition;
+    &.aos-animate{
+      transition: $transition;
+    }
   }
   span{
     position: relative;

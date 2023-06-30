@@ -2,8 +2,8 @@
 // Рекомендуется создавать отдельный файл в папке components и подключать все там
 
 // Определение операционной системы на мобильных
-import { mobileCheck } from "./functions/mobile-check";
-console.log(mobileCheck())
+// import { mobileCheck } from "./functions/mobile-check";
+// console.log(mobileCheck())
 
 // Определение ширины экрана
 // import { isMobile, isTablet, isDesktop } from './functions/check-viewport';
@@ -96,13 +96,10 @@ const inputMask = new Inputmask('+7 (999) 999-99-99');
 inputMask.mask(telSelector,{
     showMaskOnHover: false,
 });
-setTimeout(() => {
-  new GraphModal().open('modalthanks')
-}, 100);
-setTimeout(() => {
-  console.log("q")
-  new GraphModal().close()
-}, 2000);
+
+
+
+
 const validation = new JustValidate(".offer__form--page") 
 validation
     .addField(".form__input--name ", [
@@ -139,15 +136,13 @@ validation
         console.log(formData)
           new  GraphModal().open('modalthanks')
           let xhr = new XMLHttpRequest();
-          // import GraphModal from 'graph-modal';
-          // const modal = new GraphModal();
           xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
               if (xhr.status === 200) {
                 if (afterSend) {
                   afterSend();
                 }
-             
+                new GraphModal().open('modalthanks')
               
                 console.log('Отправлено');
               }
@@ -161,7 +156,6 @@ validation
     })
 
     const btnRemove = document.querySelector('[data-graph-target="modal"] .graph-modal__close')
-    console.log(btnRemove)
     const validation2 = new JustValidate(".graph-modal .offer__form") 
     validation2
         .addField(".form__input--name ", [

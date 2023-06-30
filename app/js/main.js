@@ -29,18 +29,17 @@ console.log('components');
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions/mobile-check */ "./src/js/functions/mobile-check.js");
-/* harmony import */ var graph_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graph-modal */ "./node_modules/graph-modal/src/graph-modal.js");
-/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aos */ "./node_modules/aos/dist/aos.js");
-/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aos__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _functions_validate_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./functions/validate-forms */ "./src/js/functions/validate-forms.js");
-/* harmony import */ var just_validate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! just-validate */ "./node_modules/just-validate/dist/just-validate.es.js");
+/* harmony import */ var graph_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graph-modal */ "./node_modules/graph-modal/src/graph-modal.js");
+/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! aos */ "./node_modules/aos/dist/aos.js");
+/* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(aos__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _functions_validate_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./functions/validate-forms */ "./src/js/functions/validate-forms.js");
+/* harmony import */ var just_validate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! just-validate */ "./node_modules/just-validate/dist/just-validate.es.js");
 // Данный файл - лишь собрание подключений готовых компонентов.
 // Рекомендуется создавать отдельный файл в папке components и подключать все там
 
 // Определение операционной системы на мобильных
-
-console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)());
+// import { mobileCheck } from "./functions/mobile-check";
+// console.log(mobileCheck())
 
 // Определение ширины экрана
 // import { isMobile, isTablet, isDesktop } from './functions/check-viewport';
@@ -68,7 +67,7 @@ console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)
 
 // Реализация модального окна
 
-const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]();
+const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_0__["default"]();
 // Реализация табов
 // import GraphTabs from 'graph-tabs';
 // const tabs = new GraphTabs('tab');
@@ -96,7 +95,7 @@ const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]();
 
 // Подключение анимаций по скроллу
 
-aos__WEBPACK_IMPORTED_MODULE_2___default().init({
+aos__WEBPACK_IMPORTED_MODULE_1___default().init({
   once: true
 });
 
@@ -133,14 +132,7 @@ const inputMask = new Inputmask('+7 (999) 999-99-99');
 inputMask.mask(telSelector, {
   showMaskOnHover: false
 });
-setTimeout(() => {
-  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().open('modalthanks');
-}, 100);
-setTimeout(() => {
-  console.log("q");
-  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().close();
-}, 2000);
-const validation = new just_validate__WEBPACK_IMPORTED_MODULE_4__["default"](".offer__form--page");
+const validation = new just_validate__WEBPACK_IMPORTED_MODULE_3__["default"](".offer__form--page");
 validation.addField(".form__input--name ", [{
   rule: "required",
   value: true,
@@ -164,16 +156,15 @@ validation.addField(".form__input--name ", [{
   console.log(ev.target);
   let formData = new FormData(ev.target);
   console.log(formData);
-  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().open('modalthanks');
+  new graph_modal__WEBPACK_IMPORTED_MODULE_0__["default"]().open('modalthanks');
   let xhr = new XMLHttpRequest();
-  // import GraphModal from 'graph-modal';
-  // const modal = new GraphModal();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         if (afterSend) {
           afterSend();
         }
+        new graph_modal__WEBPACK_IMPORTED_MODULE_0__["default"]().open('modalthanks');
         console.log('Отправлено');
       }
     }
@@ -183,8 +174,7 @@ validation.addField(".form__input--name ", [{
   ev.target.reset();
 });
 const btnRemove = document.querySelector('[data-graph-target="modal"] .graph-modal__close');
-console.log(btnRemove);
-const validation2 = new just_validate__WEBPACK_IMPORTED_MODULE_4__["default"](".graph-modal .offer__form");
+const validation2 = new just_validate__WEBPACK_IMPORTED_MODULE_3__["default"](".graph-modal .offer__form");
 validation2.addField(".form__input--name ", [{
   rule: "required",
   value: true,
@@ -210,8 +200,8 @@ validation2.addField(".form__input--name ", [{
   console.log(formData);
   let xhr = new XMLHttpRequest();
   btnRemove.click();
-  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().close('modal');
-  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().open('modalthanks');
+  new graph_modal__WEBPACK_IMPORTED_MODULE_0__["default"]().close('modal');
+  new graph_modal__WEBPACK_IMPORTED_MODULE_0__["default"]().open('modalthanks');
   console.log('Отправлено');
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
@@ -261,34 +251,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/js/functions/mobile-check.js":
-/*!******************************************!*\
-  !*** ./src/js/functions/mobile-check.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   mobileCheck: () => (/* binding */ mobileCheck)
-/* harmony export */ });
-/* harmony import */ var _vars__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_vars */ "./src/js/_vars.js");
-
-const mobileCheck = () => {
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  if (/android/i.test(userAgent)) {
-    _vars__WEBPACK_IMPORTED_MODULE_0__["default"].htmlEl.classList.add('page--android');
-    return "Android";
-  }
-  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-    _vars__WEBPACK_IMPORTED_MODULE_0__["default"].htmlEl.classList.add('page--ios');
-    return "iOS";
-  }
-  return "unknown";
-};
-
-/***/ }),
-
 /***/ "./src/js/functions/validate-forms.js":
 /*!********************************************!*\
   !*** ./src/js/functions/validate-forms.js ***!
@@ -335,11 +297,14 @@ __webpack_require__.r(__webpack_exports__);
 let e = document.documentElement;
 let g = document.getElementsByTagName('body')[0];
 let winw = window.innerWidth || e.clientWidth || g.clientWidth;
+let isMobile = winw < 576;
 let isTablet = winw < 1024;
-let isDesk = winw < 1200;
+let isDesk = winw > 1200;
 function resizeParams() {
   winw = window.innerWidth || e.clientWidth || g.clientWidth;
   isTablet = winw < 1024;
+  isDesk = winw > 1200;
+  isMobile = winw < 576;
 }
 function parallaxRocket() {
   if (isTablet) return;
@@ -350,11 +315,62 @@ function parallaxRocket() {
     bg.style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
   });
 }
+function sliders() {
+  let tariffsSlider;
+  let mySwiper;
+  if (!isDesk) {
+    swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation]);
+    let tariffsSlider = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"](".tariffs__slider ", {
+      // slidesPerView: 1,
+      // spaceBetween: 10,
+      // Responsive breakpoints
+      init: true,
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        // when window width is >= 480px
+        560: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        // when window width is >= 640px
+        992: {
+          slidesPerView: 3,
+          spaceBetween: 40
+        }
+      }
+    });
+  } else {
+    if (tariffsSlider) {
+      console.log(tariffsSlider);
+      tariffsSlider.destroy(true, true);
+    }
+  }
+  if (isMobile) {
+    swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination]);
+    let mySwiper = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"](".cards__slider ", {
+      slidesPerView: 1,
+      spaceBetween: 10
+    });
+  } else {
+    if (mySwiper) {
+      mySwiper.destroy(true, true);
+    }
+  }
+}
 window.addEventListener('resize', function (event) {
   resizeParams();
   parallaxRocket();
+  sliders();
 }, true);
 window.addEventListener("load", function () {
+  parallaxRocket();
+  sliders();
+
+  // Импорт с вебпака пока не работает, поэтому пока сюда nice-select2
   !function (e, t) {
     "object" == typeof exports && "object" == "object" ? module.exports = t() : "function" == typeof define && __webpack_require__.amdO ? define([], t) : "object" == typeof exports ? exports.NiceSelect = t() : e.NiceSelect = t();
   }(self, () => (() => {
@@ -600,18 +616,15 @@ window.addEventListener("load", function () {
       }), c(this._findNext(null), "focus");
     }, t;
   })());
-  parallaxRocket();
-  // let phones = this.document.querySelectorAll('input[type="tel"]')
-  // let im = new Inputmask("+7 (999) 999-99-99")
-  // im.mask(phones)
   NiceSelect.bind(document.getElementById("a-select"), {
     searchable: false,
     placeholder: 'select',
     searchtext: 'zoek',
     selectedtext: 'geselecteerd'
   });
+
+  // Изменение цены
   document.getElementById("a-select").addEventListener('change', function () {
-    // console.log('You selected: ', this.value);
     let prevValues = document.querySelectorAll(".tariff__price--isCurrent");
     let values = document.querySelectorAll(`[data-select='${this.value}']`);
     prevValues.forEach(element => {
@@ -621,97 +634,6 @@ window.addEventListener("load", function () {
       element.classList.add('tariff__price--isCurrent');
     });
   });
-  swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination]);
-  if (isDesk) {
-    tariffsSlider = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"](".tariffs__slider ", {
-      // slidesPerView: 1,
-      // spaceBetween: 10,
-      // Responsive breakpoints
-      breakpoints: {
-        // when window width is >= 320px
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 20
-        },
-        // when window width is >= 480px
-        560: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
-        // when window width is >= 640px
-        992: {
-          slidesPerView: 3,
-          spaceBetween: 40
-        }
-      }
-    });
-  }
-  const breakpoint = window.matchMedia('(max-width:576px)');
-  // keep track of swiper instances to destroy later
-  let mySwiper;
-
-  //////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////
-
-  const breakpointChecker = function () {
-    // if larger viewport and multi-row layout needed
-    if (breakpoint.matches === true) {
-      // clean up old instances and inline styles when available
-
-      // or/and do nothing
-      return enableSwiper();
-
-      // else if a small viewport and single column layout needed
-    } else if (breakpoint.matches === false) {
-      // fire small viewport version of swiper
-
-      if (mySwiper !== undefined) {
-        mySwiper[0].destroy(true, true);
-        mySwiper[1].destroy(true, true);
-      }
-    }
-  };
-
-  //////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////
-
-  const enableSwiper = function () {
-    //   mySwiper = new Swiper ('.swiper-container', {
-
-    //     loop: true,
-
-    //     slidesPerView: 'auto',
-
-    //     centeredSlides: true,
-
-    //     a11y: true,
-    //     keyboardControl: true,
-    //     grabCursor: true,
-
-    //     // pagination
-    //     pagination: '.swiper-pagination',
-    //     paginationClickable: true,
-
-    //   });
-
-    swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination]);
-    mySwiper = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"](".cards__slider ", {
-      slidesPerView: 1,
-      spaceBetween: 10
-    });
-  };
-
-  //////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////
-
-  // keep an eye on viewport size changes
-  breakpoint.addListener(breakpointChecker);
-
-  // kickstart
-  breakpointChecker();
 });
 
 /***/ }),

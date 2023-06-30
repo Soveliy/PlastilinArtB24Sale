@@ -124,16 +124,18 @@ a {
   text-transform: uppercase;
   border-radius: 10px;
   text-align: center;
-  -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-  transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
   outline: none;
   border: none;
   cursor: pointer;
 }
 @media (min-width: 1024px) {
   .btn {
-    -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-    transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
+  }
+  .btn.aos-animate {
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
   }
 }
 .btn span {
@@ -460,8 +462,8 @@ a {
 @media (min-width: 1024px) {
   .contact-link {
     font-size: 20px;
-    -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-    transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
   }
   .contact-link:hover {
     color: #115793;
@@ -1065,8 +1067,8 @@ select.section__select {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-  transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 @media (min-width: 576px) {
   .form .just-validate-error-label {
@@ -1087,8 +1089,8 @@ select.section__select {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #fff;
-  -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-  transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 .form__input:not(:focus):not(:-moz-placeholder-shown) ~ .form__input-placeholder {
   font-size: 12px;
@@ -1151,8 +1153,8 @@ select.section__select {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-  transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 @media (min-width: 576px) {
   .form__input-placeholder {
@@ -1338,7 +1340,13 @@ select.section__select {
 }
 @media (min-width: 1024px) {
   .tariff__price {
+    font-size: 30px;
     margin-bottom: 38px;
+  }
+}
+@media (min-width: 1440px) {
+  .tariff__price {
+    font-size: 40px;
   }
 }
 .tariff__list {
@@ -1658,8 +1666,8 @@ select.section__select {
 }
 
 .fade, .fade.animate-open {
-  -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-  transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 .graph-modal {
@@ -1699,8 +1707,8 @@ select.section__select {
   -webkit-transform: translateY(100%);
   -ms-transform: translateY(100%);
   transform: translateY(100%);
-  -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-  transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
   opacity: 1 !important;
 }
 @media (min-width: 1024px) {

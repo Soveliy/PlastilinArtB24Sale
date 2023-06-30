@@ -1690,6 +1690,8 @@ select.section__select {
   }
 }
 .graph-modal__container {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   width: 100%;
   margin: 0;
   padding: 20px 10px;
@@ -1699,9 +1701,6 @@ select.section__select {
   transform: translateY(100%);
   -webkit-transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
   transition: 0.8s cubic-bezier(0, 0.82, 0.165, 1);
-  display: -webkit-inline-box !important;
-  display: -ms-inline-flexbox !important;
-  display: inline-flex !important;
   opacity: 1 !important;
 }
 @media (min-width: 1024px) {
@@ -1719,6 +1718,9 @@ select.section__select {
   -webkit-transform: none;
   -ms-transform: none;
   transform: none;
+  display: -webkit-inline-box !important;
+  display: -ms-inline-flexbox !important;
+  display: inline-flex !important;
 }
 .graph-modal__container input {
   background-color: #F7F9FC;

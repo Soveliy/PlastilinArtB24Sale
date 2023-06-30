@@ -1164,13 +1164,14 @@ select.section__select{
     }
   }
   &__container{
+    flex-shrink: 0;
     width: 100%;
     margin: 0;
     padding: 20px 10px;
     border-radius: 10px;
     transform: translateY(100%);
     transition: $transition;
-    display: inline-flex !important;
+    
     opacity: 1 !important;
     @include lit-desktop(){
       max-width: 618px;
@@ -1181,6 +1182,7 @@ select.section__select{
     }
     &.graph-modal-open{
       transform: none;
+      display: inline-flex !important;
     }
     input{
       background-color: #F7F9FC;

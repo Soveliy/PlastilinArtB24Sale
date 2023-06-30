@@ -69,7 +69,6 @@ console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)
 // Реализация модального окна
 
 const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]();
-
 // Реализация табов
 // import GraphTabs from 'graph-tabs';
 // const tabs = new GraphTabs('tab');
@@ -134,6 +133,13 @@ const inputMask = new Inputmask('+7 (999) 999-99-99');
 inputMask.mask(telSelector, {
   showMaskOnHover: false
 });
+setTimeout(() => {
+  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().open('modalthanks');
+}, 100);
+setTimeout(() => {
+  console.log("q");
+  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().close();
+}, 2000);
 const validation = new just_validate__WEBPACK_IMPORTED_MODULE_4__["default"](".offer__form--page");
 validation.addField(".form__input--name ", [{
   rule: "required",
@@ -158,7 +164,10 @@ validation.addField(".form__input--name ", [{
   console.log(ev.target);
   let formData = new FormData(ev.target);
   console.log(formData);
+  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().open('modalthanks');
   let xhr = new XMLHttpRequest();
+  // import GraphModal from 'graph-modal';
+  // const modal = new GraphModal();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
@@ -173,6 +182,8 @@ validation.addField(".form__input--name ", [{
   xhr.send(formData);
   ev.target.reset();
 });
+const btnRemove = document.querySelector('[data-graph-target="modal"] .graph-modal__close');
+console.log(btnRemove);
 const validation2 = new just_validate__WEBPACK_IMPORTED_MODULE_4__["default"](".graph-modal .offer__form");
 validation2.addField(".form__input--name ", [{
   rule: "required",
@@ -186,7 +197,7 @@ validation2.addField(".form__input--name ", [{
   rule: "function",
   errorMessage: "Введите корректный номер",
   validator: function () {
-    const phone = telSelector[0].inputmask.unmaskedvalue();
+    const phone = telSelector[1].inputmask.unmaskedvalue();
     return phone.length === 10;
   }
 }]).addField(".form__input--email ", [{
@@ -198,14 +209,13 @@ validation2.addField(".form__input--name ", [{
   let formData = new FormData(ev.target);
   console.log(formData);
   let xhr = new XMLHttpRequest();
+  btnRemove.click();
+  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().close('modal');
+  new graph_modal__WEBPACK_IMPORTED_MODULE_1__["default"]().open('modalthanks');
+  console.log('Отправлено');
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        if (afterSend) {
-          afterSend();
-        }
-        console.log('Отправлено');
-      }
+      if (xhr.status === 200) {}
     }
   };
   xhr.open('POST', 'mail.php', true);
